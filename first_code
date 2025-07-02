@@ -1,0 +1,84 @@
+//Código que cambian el color de los LEDs cuando detecta una determinada distancia y muestra los datos por puerto serie
+
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+
+#define LED_PIN     6
+#define LED_COUNT   10
+
+#define PACKET_HEADER1 0x4D  // 'M'
+#define PACKET_HEADER2 0x46  // 'F'
+#define MAX_SENSORS 8
+
+Adafruit_NeoPixel pixels(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+const uint8_t NUM_SENSORS = 8;
+const uint8_t BYTES_PER_DISTANCE = 2;
+const uint8_t PACKET_SIZE = 2 + NUM_SENSORS * BYTES_PER_DISTANCE;
+
+uint8_t buffer[64];
+uint8_t index = 0;
+bool sync = false;
+
+void mostrarColorAlerta(bool alerta) {
+  uint32_t color = alerta ? pixels.Color(255, 0, 0) : pixels.Color(0, 255, 0);
+  for (int i = 0; i < LED_COUNT; i++) {
+    pixels.setPixelColor(i, color);
+  }
+  pixels.show();
+}
+
+void procesarPaquete(uint8_t* data) {
+  bool alerta = false;
+  Serial.println("\nNueva lectura de sensores");
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    uint16_t distancia = ((uint16_t)data[2 + i * 2] << 8) | data[3 + i * 2];
+    Serial.print("Sensor ");
+    Serial.print(i);
+    Serial.print(": ");
+
+    if (distancia == 0xFFFF) {
+      Serial.println("0 mm");
+    } else {
+      Serial.print(distancia);
+      Serial.println(" mm");
+      if (distancia >= 1 && distancia <= 200) {
+        alerta = true;
+      }
+    }
+  }
+  mostrarColorAlerta(alerta);
+}
+
+void setup() {
+  Serial.begin(115200);
+  Serial1.begin(115200);
+  pixels.begin();
+  pixels.show();
+  Serial.println("Esperando datos...");
+}
+
+void loop() {
+  while (Serial1.available()) {
+    uint8_t byte = Serial1.read();
+
+    if (!sync) {
+      if (index == 0 && byte == PACKET_HEADER1) {
+        buffer[index++] = byte;
+      } else if (index == 1 && byte == PACKET_HEADER2) {
+        buffer[index++] = byte;
+        sync = true;
+      } else {
+        index = 0;
+      }
+    } else {
+      buffer[index++] = byte;
+
+      if (index >= PACKET_SIZE) {
+        procesarPaquete(buffer);
+        index = 0;
+        sync = false;
+      }
+    }
+  }
+}
