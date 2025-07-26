@@ -4,7 +4,7 @@
 #include <Adafruit_NeoPixel.h>
 
 #define LED_PIN     6
-#define LED_COUNT   10
+#define LED_COUNT   2
 
 #define PACKET_HEADER1 0x4D  // 'M'
 #define PACKET_HEADER2 0x46  // 'F'
