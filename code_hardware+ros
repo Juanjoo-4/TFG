@@ -1,0 +1,113 @@
+//rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600
+//rostopic echo /sensor_distances
+//rostopic pub /alerta_led std_msgs/Bool "data: true"
+//rostopic pub /alerta_led std_msgs/Bool "data: false"
+
+
+#include <Arduino.h>
+#include <Adafruit_NeoPixel.h>
+#include <SoftwareSerial.h>
+
+// ROS
+#include <ros.h>
+#include <std_msgs/UInt16MultiArray.h>
+#include <std_msgs/Bool.h>
+
+// Pines y constantes
+#define LED_PIN     6
+#define LED_COUNT   2
+#define SENSOR_RX   8
+#define SENSOR_TX   9
+#define PACKET_HEADER1 0x4D
+#define PACKET_HEADER2 0x46
+#define NUM_SENSORS 8
+#define BYTES_PER_DISTANCE 2
+#define PACKET_SIZE (2 + NUM_SENSORS * BYTES_PER_DISTANCE)
+
+SoftwareSerial sensorSerial(SENSOR_RX, SENSOR_TX); // RX, TX (TX no se usa)
+Adafruit_NeoPixel pixels(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+
+// ROS
+ros::NodeHandle nh;
+std_msgs::UInt16MultiArray sensor_data_msg;
+ros::Publisher sensor_pub("sensor_distances", &sensor_data_msg);
+bool alerta_remota = false;
+
+void alertaCallback(const std_msgs::Bool &msg) {
+  alerta_remota = msg.data;
+}
+ros::Subscriber<std_msgs::Bool> alerta_sub("alerta_led", &alertaCallback);
+
+// Comunicación
+uint8_t buffer[64];
+uint8_t index = 0;
+bool sync = false;
+
+void mostrarColorAlerta(bool alerta) {
+  uint32_t color = alerta ? pixels.Color(255, 0, 0) : pixels.Color(0, 255, 0);
+  for (int i = 0; i < LED_COUNT; i++) {
+    pixels.setPixelColor(i, color);
+  }
+  pixels.show();
+}
+
+void procesarPaquete(uint8_t* data) {
+  bool alerta_local = false;
+
+  static uint16_t sensor_values[NUM_SENSORS];
+  sensor_data_msg.data = sensor_values;
+  sensor_data_msg.data_length = NUM_SENSORS;
+
+  for (int i = 0; i < NUM_SENSORS; i++) {
+    uint16_t distancia = ((uint16_t)data[2 + i * 2] << 8) | data[3 + i * 2];
+    if (distancia == 0xFFFF) distancia = 0;
+    sensor_values[i] = distancia;
+
+    if (distancia >= 1 && distancia <= 200) {
+      alerta_local = true;
+    }
+  }
+
+  sensor_pub.publish(&sensor_data_msg);
+  mostrarColorAlerta(alerta_local || alerta_remota);
+}
+
+void setup() {
+  Serial.begin(115200);         // rosserial: comunicación con ROS
+  sensorSerial.begin(115200);   // sensor: comunicación por software serial
+  pixels.begin();
+  pixels.show();
+  mostrarColorAlerta(true);
+  delay(300);
+  mostrarColorAlerta(false);
+
+  nh.initNode();
+  nh.advertise(sensor_pub);
+  nh.subscribe(alerta_sub);
+}
+
+void loop() {
+  while (sensorSerial.available()) {
+    uint8_t byte = sensorSerial.read();
+
+    if (!sync) {
+      if (index == 0 && byte == PACKET_HEADER1) {
+        buffer[index++] = byte;
+      } else if (index == 1 && byte == PACKET_HEADER2) {
+        buffer[index++] = byte;
+        sync = true;
+      } else {
+        index = 0;
+      }
+    } else {
+      buffer[index++] = byte;
+      if (index >= PACKET_SIZE) {
+        procesarPaquete(buffer);
+        index = 0;
+        sync = false;
+      }
+    }
+  }
+
+  nh.spinOnce();
+}
