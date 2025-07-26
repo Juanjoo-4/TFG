@@ -47,7 +47,7 @@ void procesarPaquete(uint8_t* data) {
     } else {
       Serial.print(distancia);
       Serial.println(" mm");
-      if (distancia >=  && distancia <= 200) {
+      if (distancia >= 1 && distancia <= 200) {
         alerta = true;
       }
     }
