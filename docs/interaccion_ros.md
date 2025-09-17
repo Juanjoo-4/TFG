@@ -24,7 +24,7 @@
   - Define un **rango válido** `[UMBRAL_MIN, UMBRAL_MAX]` 
   - Recorre todas las distancias:
     - Si alguna está **fuera del rango** o es `0`, se considera una alerta
-    - Solo si **todas** las distancias están dentro del rango, se considera estado “OK”
+    - Solo si **todas** las distancias están dentro del rango, se considera estado `OK`
 
 - Publica en:
   - `/alerta_led` (`std_msgs/Bool`)
