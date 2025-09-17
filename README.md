@@ -1,4 +1,7 @@
 # TFG: TeraRanger Multiflex + Arduino + ROS (Nodo C++)
+Este proyecto forma parte del Trabajo Fin de Grado de Ingeniería Electrónica Industrial.  
+Consiste en la integración de sensores de distancia TeraRanger Multiflex con un Arduino Nano, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
+El sistema detecta si los sensores están dentro de un rango válido y muestra una alerta visual a través de los LEDs.
 
 ## Objetivo
 Arduino publica distancias; un nodo C++ evalúa si todas están dentro del rango [LOW, HIGH]. 
@@ -6,9 +9,14 @@ Arduino publica distancias; un nodo C++ evalúa si todas están dentro del rango
 Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en rojo; si no, verde.
 
 ## Requisitos
-- Ubuntu 20.04 + ROS Noetic
-- rosserial_python, std_msgs
-- PlatformIO (para Arduino)
+- Ubuntu 20.04 con ROS Noetic instalado
+- Arduino Nano (ATmega328P, bootloader nuevo)
+- Sensor TeraRanger Multiflex
+- Tira de LEDs NeoPixel (Adafruit)
+- Librerías y herramientas:
+  - `rosserial_arduino`, `rosserial_python`, `std_msgs`
+  - PlatformIO para compilar y cargar el código al Arduino
+  - Adafruit NeoPixel (`lib_deps` en `platformio.ini`)
 
 ## Conexiones de hardware
 
@@ -77,12 +85,10 @@ rostopic pub /alerta_forzada std_msgs/Bool "data: false" -1
 ```bash
 rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 ```
-## Temas ROS
-- /sensor_distances — std_msgs/UInt16MultiArray (mm)
-- /alerta_led — std_msgs/Bool (true = alerta)
 
-## Parámetros
-- LOW (int, mm)  – umbral inferior 
-- HIGH (int, mm) – umbral superior 
-
+## Pruebas realizadas
+Se han realizado las siguientes pruebas (más información en docs/pruebas.md):
+- Publicación de distancias desde Arduino
+- Generación de alerta desde el nodo ROS
+- Encendido correcto de los LEDs
 
