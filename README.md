@@ -10,6 +10,27 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 - rosserial_python, std_msgs
 - PlatformIO (para Arduino)
 
+## Conexiones de hardware
+
+### Arduino Nano (ATmega328P - bootloader nuevo)
+
+- Sensor TeraRanger Multiflex:
+  - RX (sensor) → pin 8 (Arduino)
+  - TX (sensor) → pin 9 (Arduino) (no es necesario)
+  - Alimentación: 5V y GND desde el Arduino o fuente externa
+
+- Tira de LEDs NeoPixel:
+  - Din → pin 6 (Arduino)
+  - 5V → 5V Arduino (se recomienda usar fuente externa si se alimentan más de 2 LEDs)
+  - GND → GND Arduino
+
+### Notas
+
+- Los pines 8 y 9 se usan con `SoftwareSerial` para la comunicación con el sensor.
+- El pin 6 se usa con la librería `Adafruit NeoPixel`.
+- El sensor y los LEDs pueden compartir alimentación si el consumo lo permite.
+
+
 ## Ejecución rápida
 1) Arduino
 ```bash
