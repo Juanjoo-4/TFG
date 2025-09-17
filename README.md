@@ -12,10 +12,12 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 
 ## Ejecución rápida
 1) Arduino
+
    cd arduino
+   
    pio run -t upload
 
-2) ROS (en 3 terminales)
+3) ROS (en 3 terminales)
 
    roscore
    
@@ -23,7 +25,7 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
    
    rosrun sensor_alerta alerta_automatica
 
-3) Comandos útiles:
+4) Comandos útiles:
    
    Modo manual ON: rostopic pub /modo_manual std_msgs/Bool "data: true" -1
 
