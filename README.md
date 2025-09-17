@@ -2,6 +2,7 @@
 
 ## Objetivo
 Arduino publica distancias; un nodo C++ evalúa si todas están dentro del rango [LOW, HIGH]. 
+
 Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en rojo; si no, verde.
 
 ## Requisitos
