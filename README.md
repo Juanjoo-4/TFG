@@ -14,14 +14,15 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
    cd arduino
    pio run -t upload
 
-2) ROS (en 2–3 terminales)
+2) ROS (en 3 terminales)
+
    roscore
    
    rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600
    
    rosrun sensor_alerta alerta_automatica
 
-   Comandos útiles:
+3) Comandos útiles:
    
    Modo manual ON: rostopic pub /modo_manual std_msgs/Bool "data: true" -1
 
