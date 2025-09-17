@@ -21,7 +21,7 @@
   - `/sensor_distances` (`UInt16MultiArray`)
 
 - Evalúa la alerta:
-  - Define un **rango válido** `[UMBRAL_MIN, UMBRAL_MAX]` (por ejemplo: 300–1200 mm)
+  - Define un **rango válido** `[UMBRAL_MIN, UMBRAL_MAX]` 
   - Recorre todas las distancias:
     - Si alguna está **fuera del rango** o es `0`, se considera una alerta
     - Solo si **todas** las distancias están dentro del rango, se considera estado “OK”
