@@ -1,4 +1,4 @@
-# ✅ Prueba 1: Publicación de distancias desde Arduino
+# Prueba 1: Publicación de distancias desde Arduino
 
 **Objetivo:**  
 Verificar que el Arduino publica correctamente las distancias en `/sensor_distances`.
@@ -26,7 +26,7 @@ rostopic echo /sensor_distances
 
 **Resultado real:**
 
-# ✅ Prueba 2: Evaluación de alerta con nodo ROS
+# Prueba 2: Evaluación de alerta con nodo ROS
 
 **Objetivo:**
 Confirmar que el nodo ROS alerta_automatica.cpp evalúa correctamente los datos y publica en `/alerta_led`.
