@@ -12,29 +12,34 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 
 ## Ejecución rápida
 1) Arduino
-
+```bash
    cd arduino
-   
    pio run -t upload
-
+```
 3) ROS (en 3 terminales)
-
+```bash
    roscore
-   
-   rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600
-   
+   rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600 
    rosrun sensor_alerta alerta_automatica
-
+```
 4) Comandos útiles:
-   
-   Modo manual ON: rostopic pub /modo_manual std_msgs/Bool "data: true" -1
 
-   Forzar alerta a true: rostopic pub /alerta_forzada std_msgs/Bool "data: true" -1
-
-   Forzar alerta a false: rostopic pub /alerta_forzada std_msgs/Bool "data: false" -1
-
-   Volver a modo automático: rostopic pub /modo_manual std_msgs/Bool "data: false" -1
-
+  **Modo manual ON:**
+```bash
+rostopic pub /modo_manual std_msgs/Bool "data: true" -1
+```
+   **Forzar alerta a true:** 
+```bash
+rostopic pub /alerta_forzada std_msgs/Bool "data: true" -1
+```
+   **Forzar alerta a false:**
+```bash
+rostopic pub /alerta_forzada std_msgs/Bool "data: false" -1
+```
+   **Volver a modo automático:**
+```bash
+rostopic pub /modo_manual std_msgs/Bool "data: false" -1
+```
 ## Temas ROS
 - /sensor_distances — std_msgs/UInt16MultiArray (mm)
 - /alerta_led — std_msgs/Bool (true = alerta)
