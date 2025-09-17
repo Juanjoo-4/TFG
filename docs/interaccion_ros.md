@@ -1,7 +1,7 @@
 # Interacción con ROS
 
 ## Comunicación desde Arduino
--Archivo: `arduino_code/main.cpp`
+- Archivo: `arduino_code/main.cpp`
 - **Publica** en el topic:
   - `/sensor_distances`
   - Tipo: `std_msgs/UInt16MultiArray`
