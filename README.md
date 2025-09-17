@@ -16,8 +16,20 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 
 2) ROS (en 2–3 terminales)
    roscore
+   
    rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600
+   
    rosrun sensor_alerta alerta_automatica
+
+   Comandos útiles:
+   
+   Modo manual ON: rostopic pub /modo_manual std_msgs/Bool "data: true" -1
+
+   Forzar alerta a true: rostopic pub /alerta_forzada std_msgs/Bool "data: true" -1
+
+   Forzar alerta a false: rostopic pub /alerta_forzada std_msgs/Bool "data: false" -1
+
+   Volver a modo automático: rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 
 ## Temas ROS
 - /sensor_distances — std_msgs/UInt16MultiArray (mm)
