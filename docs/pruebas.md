@@ -52,8 +52,8 @@ rostopic echo /alerta_led
 - Uno o más sensores apuntando al vacío.
 
 **Resultado esperado:**
-`false` si todos los sensores están dentro del rango válido.
-`true` si alguno está fuera del rango o da 0.
+- `false` si todos los sensores están dentro del rango válido.
+- `true` si alguno está fuera del rango o da 0.
 
 **Resultado real:**
 
