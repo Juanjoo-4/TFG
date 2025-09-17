@@ -16,7 +16,7 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 cd arduino
 pio run -t upload
 ```
-3) ROS (en 3 terminales)
+3) ROS (en 3 terminales distintos)
 ```bash
 roscore
 rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600 
