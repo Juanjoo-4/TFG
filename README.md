@@ -32,7 +32,7 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 
 ## Diagrama de flujo del programa
 
-![Diagrama de flujo del programa](docs/flujo-programa.png)
+![Diagrama de flujo del programa](docs/diagrama-flujo.png)
 
 El programa comienza con la inicialización de los componentes principales: pines, tira de LEDs (NeoPixel), rosserial y comunicación con el sensor (SoftwareSerial).  
 Una vez iniciado, el Arduino entra en un bucle en el que:
