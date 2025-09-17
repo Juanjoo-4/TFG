@@ -55,7 +55,7 @@ Una vez iniciado, el Arduino entra en un bucle en el que:
 
 Este diagrama refleja la interacción entre el Arduino y ROS de forma cíclica y sin fin mientras el sistema esté en funcionamiento.
 
-## Ejecución rápida
+## Como ejecutar el sistema
 1) Arduino
 ```bash
 cd arduino
