@@ -45,7 +45,7 @@ rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 - /alerta_led — std_msgs/Bool (true = alerta)
 
 ## Parámetros
-- LOW (int, mm)  – umbral inferior (por defecto 300)
-- HIGH (int, mm) – umbral superior (por defecto 1200)
+- LOW (int, mm)  – umbral inferior 
+- HIGH (int, mm) – umbral superior 
 
 
