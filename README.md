@@ -30,6 +30,22 @@ Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en r
 - El pin 6 se usa con la librería `Adafruit NeoPixel`.
 - El sensor y los LEDs pueden compartir alimentación si el consumo lo permite.
 
+## Diagrama de flujo del programa
+
+![Diagrama de flujo del programa](docs/flujo-programa.png)
+
+El programa comienza con la inicialización de los componentes principales: pines, tira de LEDs (NeoPixel), rosserial y comunicación con el sensor (SoftwareSerial).  
+Una vez iniciado, el Arduino entra en un bucle en el que:
+
+1. Espera a recibir un paquete completo de datos desde el sensor.
+2. Cuando el paquete está completo, publica las distancias en el topic `/sensor_distances`.
+3. El nodo ROS evalúa si las distancias están dentro de un rango válido y publica un valor booleano en `/alerta_led`.
+4. El Arduino recibe este valor y cambia el color de los LEDs:
+   - Si `true` → alerta → LEDs en rojo.
+   - Si `false` → todo correcto → LEDs en verde.
+5. El ciclo se repite continuamente.
+
+Este diagrama refleja la interacción entre el Arduino y ROS de forma cíclica y sin fin mientras el sistema esté en funcionamiento.
 
 ## Ejecución rápida
 1) Arduino
