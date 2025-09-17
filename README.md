@@ -3,11 +3,6 @@ Este proyecto forma parte del Trabajo Fin de Grado de Ingeniería Electrónica I
 Consiste en la integración de sensores de distancia TeraRanger Multiflex con un Arduino Nano, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
 El sistema detecta si los sensores están dentro de un rango válido y muestra una alerta visual a través de los LEDs.
 
-## Objetivo
-Arduino publica distancias; un nodo C++ evalúa si todas están dentro del rango [LOW, HIGH]. 
-
-Si alguna está fuera o 0 (vacío) → publica alerta → Arduino pone LEDs en rojo; si no, verde.
-
 ## Requisitos
 - Ubuntu 20.04 con ROS Noetic instalado
 - Arduino Nano (ATmega328P, bootloader nuevo)
