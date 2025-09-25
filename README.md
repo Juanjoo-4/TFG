@@ -5,7 +5,7 @@ El sistema detecta si los sensores están dentro de un rango válido y muestra u
 
 ## Requisitos
 - Ubuntu 20.04 con ROS Noetic instalado
-- Arduino Nano (ATmega328P, bootloader nuevo)
+- Arduino Mega 2560 (ATmega2560)
 - Sensor TeraRanger Multiflex
 - Tira de LEDs NeoPixel (Adafruit)
 - Librerías y herramientas:
