@@ -1,6 +1,6 @@
 # TFG: TeraRanger Multiflex + Arduino + ROS (Nodo C++)
 Este proyecto forma parte del Trabajo Fin de Grado de Ingeniería Electrónica Industrial.  
-Consiste en la integración de sensores de distancia TeraRanger Multiflex con un Arduino Nano, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
+Consiste en la integración de sensores de distancia TeraRanger Multiflex con un Arduino Mega 2560, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
 El sistema detecta si los sensores están dentro de un rango válido y muestra una alerta visual a través de los LEDs.
 
 ## Requisitos
