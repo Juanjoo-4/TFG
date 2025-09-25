@@ -2,32 +2,32 @@
 
 ## Comunicación desde Arduino
 - Archivo: `arduino_code/main.cpp`
-- **Publica** en el topic:
-  - `/sensor_distances`
-  - Tipo: `std_msgs/UInt16MultiArray`
-  - Contenido: `data[i]` representa la distancia (en milímetros) del sensor i (de 0 a 7)
-
-- **Se suscribe** al topic:
+  
+- **Publica** en los topics:
+  - `/sensor_distances_1`
+    - Tipo: `std_msgs/UInt16MultiArray`
+    - Contenido: `data[i]` es la distancia (en mm) del sensor *i* (0..7) del **array A**.
+    - Se publica cuando llega un paquete completo del array A.
+  - `/sensor_distances_2`
+    - Tipo: `std_msgs/UInt16MultiArray`
+    - Contenido: `data[i]` es la distancia (en mm) del sensor *i* (0..7) del **array B**.
+    - Se publica cuando llega un paquete completo del array B.
+  - `/alerta_estado`
+    - Tipo: `std_msgs/Int8`
+    - Estados: `0 = OK (verde)`, `1 = BAJO (azul)`, `2 = ALTO (rojo)`.
+    - Solo se publica cuando cambia el estado respecto al último enviado.
   - `/alerta_led`
-  - Tipo: `std_msgs/Bool`
-  - Acción: si `true` → todos los LEDs en rojo; si `false` → todos en verde
+    - Tipo: `std_msgs/Bool`
+    - Automático: `true` si `estado != 0`, `false` si `estado == 0`.
+    - Manual: refleja el valor de `/alerta_forzada`.
+    - Solo se publica cuando cambia respecto al último enviado.
 
----
-
-## Nodo ROS en C++ (`sensor_alerta`)
-
-- Archivo: `ros_ws/alerta_automatica.cpp`
-- Se **suscribe** a:
-  - `/sensor_distances` (`UInt16MultiArray`)
-
-- Evalúa la alerta:
-  - Define un **rango válido** `[UMBRAL_MIN, UMBRAL_MAX]` 
-  - Recorre todas las distancias:
-    - Si alguna está **fuera del rango** o es `0`, se considera una alerta
-    - Solo si **todas** las distancias están dentro del rango, se considera estado `OK`
-
-- Publica en:
-  - `/alerta_led` (`std_msgs/Bool`)
-    - `true` → alerta activada (Arduino enciende LEDs en rojo)
-    - `false` → estado normal (LEDs en verde)
-
+- **Se suscribe** a los topics:
+  - `/modo_manual`
+    - Tipo: `std_msgs/Bool`
+    - `true` → entra en modo manual (pinta inmediatamente rojo/verde según `/alerta_forzada`).  
+      `false` → vuelve a automático (pintado según `/alerta_estado`).
+  - `/alerta_forzada`
+    - Tipo: `std_msgs/Bool`
+    - En manual: `true` → LEDs rojos, `false` → LEDs verdes.  
+      En automático: no afecta.
