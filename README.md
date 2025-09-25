@@ -35,7 +35,7 @@ El sistema detecta si los sensores están dentro de un rango válido y muestra u
 
 ## Diagrama de flujo del programa
 
-![Diagrama de flujo del programa](docs/diagrama-flujo.png)
+![Diagrama de flujo del programa](docs/Diagrama de flujo TeraRanger.drawio.png)
 
 El programa comienza con la inicialización de los componentes principales: pines, tira de LEDs (NeoPixel), rosserial y comunicación con el sensor (SoftwareSerial).  
 Una vez iniciado, el Arduino entra en un bucle en el que:
