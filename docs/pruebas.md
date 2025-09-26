@@ -30,6 +30,7 @@ rostopic echo /sensor_distances_2
 
 **Objetivo:**
 Confirmar que el Arduino evalúa correctamente el estado global y publica en `/alerta_estado` y `/alerta_led` solo cuando hay cambios.
+
 **Procedimiento:**  
 1. Dejar el sistema corriendo como en la Prueba 1.
 2. Abrir nuevos terminales para observar:
@@ -58,6 +59,7 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 
 **Objetivo:**
 Verificar que en modo manual el sistema deja de pintar automáticamente y obedece a /alerta_forzada.
+
 **Procedimiento:**  
 1. Activar modo manual:
 ```bash
@@ -88,6 +90,7 @@ rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 
 **Objetivo:**
 Verificar que si un array deja de enviar datos, el sistema lo trata como BAJO (1) tras 250 ms.
+
 **Procedimiento:**  
 1. Con el sistema en marcha, desconectar temporalmente una de las dos líneas TX de los arrays o apagarlo.
 2. Observar:
