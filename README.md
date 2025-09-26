@@ -86,6 +86,6 @@ rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 Se han realizado las siguientes pruebas (más información en docs/pruebas.md):
 - Publicación continua de distancias desde ambos arrays de sensores.
 - Cálculo del estado global en Arduino con prioridad ALTO > BAJO > OK.
-- Publicación solo en cambios de /alerta_estado y /alerta_led.
-- Encendido correcto de LEDs en automático y obediencia de /alerta_forzada en manual.
+- Evaluación del modo manual.
+- Tolerancia a pérdida de datos de un array.
 
