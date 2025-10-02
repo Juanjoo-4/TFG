@@ -1,4 +1,4 @@
-# TFG: TeraRanger Multiflex + Arduino + ROS 
+# iLYDAR : información por LEDs y Detección Anular de Rango
 Este proyecto forma parte del Trabajo Fin de Grado de Ingeniería Electrónica Industrial.  
 Consiste en la integración de dos arrays de sensores de distancia TeraRanger Multiflex con un Arduino Mega 2560, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
 El sistema detecta si los sensores están dentro de un rango válido, calcula un estado global de alerta (0/1/2) y muestra el resultado en los LEDs, además de publicarlo en ROS.
