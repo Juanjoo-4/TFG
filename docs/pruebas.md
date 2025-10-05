@@ -29,6 +29,7 @@ rostopic echo /sensor_distances_2
 # Prueba 2: Evaluación de alerta (modo automático)
 
 **Objetivo:**
+
 Confirmar que el Arduino evalúa correctamente el estado global y publica en `/alerta_estado` y `/alerta_led` solo cuando hay cambios.
 
 **Procedimiento:**  
@@ -58,6 +59,7 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 # Prueba 3: Evaluación de modo manual 
 
 **Objetivo:**
+
 Verificar que en modo manual el sistema deja de pintar automáticamente y obedece a /alerta_forzada.
 
 **Procedimiento:**  
@@ -89,6 +91,7 @@ rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 # Prueba 4: Tolerancia a pérdida de datos de un array
 
 **Objetivo:**
+
 Verificar que si un array deja de enviar datos, el sistema lo trata como BAJO (1) tras 250 ms.
 
 **Procedimiento:**  
@@ -108,10 +111,10 @@ rostopic echo /alerta_led
 
 **Resultado real:**
 
-# Prueba 5: Verificación de holgura de la rueda a la altura
-máxima prevista
+# Prueba 5: Verificación de holgura de la rueda a la altura máxima prevista
 
 **Objetivo:**
+
 Demostrar, mediante evidencia fotográfica, que la rueda no entra en contacto con la estructura cuando supera irregularidades u obstáculos dentro del rango previsto de operación.
 
 **Procedimiento:**  
@@ -124,9 +127,11 @@ Demostrar, mediante evidencia fotográfica, que la rueda no entra en contacto co
 4. En la posición B, intentar introducir una galga o un objeto similar de 1 mm entre rueda y estructura en el punto crítico. Si el objeto entra sin rozamiento apreciable, registrar ">1 mm de separación"; si no entra pero no hay evidencia de contacto, registrar "sin contacto apreciable".
 
 **Criterio de aceptación:**  
+
 La prueba se considera superada si, para la altura máxima de la rueda, no se produce contacto rueda–estructura y se verifica al menos 1 mm de separación.
 
 **Resultado esperado:**
+
 Al superar el obstáculo, se verifica el criterio de aceptación o, en su defecto, ausencia clara de marcas de rozamiento.
 
 **Resultado real:**
