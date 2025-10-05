@@ -1,6 +1,7 @@
 # Prueba 1: Publicación continua de distancias desde ambos arrays de sensores
 
-**Objetivo:**  
+**Objetivo:** 
+
 Verificar que el Arduino publica correctamente las distancias en `/sensor_distances_1` y `/sensor_distances_2`.
 
 **Procedimiento:**  
