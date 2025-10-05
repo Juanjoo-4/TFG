@@ -8,7 +8,7 @@ Verificar que el Arduino publica correctamente las distancias en `/sensor_distan
 2. Abrir una terminal y lanzar `roscore`.
 3. Terminal 2, ejecutar (ajustar el puerto):
 ```bash
-rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 _baud:=57600
+rosrun rosserial_python serial_node.py _port:=/dev/ttyUSB0 
 ```
 4. Terminal 3:
 ```bash
@@ -108,3 +108,25 @@ rostopic echo /alerta_led
 
 **Resultado real:**
 
+# Prueba 5: Verificación de holgura de la rueda a la altura
+máxima prevista
+
+**Objetivo:**
+Demostrar, mediante evidencia fotográfica, que la rueda no entra en contacto con la estructura cuando supera irregularidades u obstáculos dentro del rango previsto de operación.
+
+**Procedimiento:**  
+1. Situar el robot sobre superficie plana y nivelada. Identificar el punto de holgura mínima entre la cara externa de la rueda y el elemento estructural más cercano.
+2. Colocar, delante de la rueda, un obstáculo rígido.
+3. Avanzar lentamente el robot hasta superar el obstáculo, capturando:
+   - Primer contacto rueda–obstáculo.
+   - Rueda en el punto de máxima altura.
+   - Rueda tras superar el obstáculo.
+4. En la posición B, intentar introducir una galga o un objeto similar de 1 mm entre rueda y estructura en el punto crítico. Si el objeto entra sin rozamiento apreciable, registrar ">1 mm de separación"; si no entra pero no hay evidencia de contacto, registrar "sin contacto apreciable".
+
+**Criterio de aceptación:**  
+La prueba se considera superada si, para la altura máxima de la rueda, no se produce contacto rueda–estructura y se verifica al menos 1 mm de separación.
+
+**Resultado esperado:**
+Al superar el obstáculo, se verifica el criterio de aceptación o, en su defecto, ausencia clara de marcas de rozamiento.
+
+**Resultado real:**
