@@ -1,11 +1,11 @@
 # iLYDAR : información por LEDs y Detección Anular de Rango
 Este proyecto forma parte del Trabajo Fin de Grado de Ingeniería Electrónica Industrial.  
-Consiste en la integración de dos arrays de sensores de distancia TeraRanger Multiflex con un Arduino Mega 2560, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
+Consiste en la integración de dos arrays de sensores de distancia TeraRanger Multiflex con un Arduino Mega 2560 Pro, una tira de LEDs NeoPixel y ROS (Robot Operating System).  
 El sistema detecta si los sensores están dentro de un rango válido, calcula un estado global de alerta (0/1/2) y muestra el resultado en los LEDs, además de publicarlo en ROS.
 
 ## Requisitos
 - Ubuntu 20.04 con ROS Noetic instalado
-- Arduino Mega 2560 (ATmega2560)
+- Arduino Mega 2560 Pro (ATmega2560)
 - Sensor TeraRanger Multiflex
 - Tira de LEDs NeoPixel (Adafruit)
 - Librerías y herramientas:
@@ -15,18 +15,18 @@ El sistema detecta si los sensores están dentro de un rango válido, calcula un
 
 ## Conexiones de hardware
 
-### Arduino Mega 2560 (ATmega2560)
+### Arduino Mega 2560 Pro (ATmega2560)
 
 - Sensor TeraRanger Multiflex:
   - RX (sensor1) → TX 1 (D18) del Arduino (no es necesario)
   - TX (sensor1) → RX1 (D19) del Arduino
   - RX (sensor2) → TX2 (D16) del Arduino (no es necesario)
   - TX  (sensor2) → RX2 (D17) del Arduino
-  - Alimentación: 5V y GND desde el Arduino o fuente externa
+  - Alimentación: 5V y GND desde fuente externa
 
 - Tira de LEDs NeoPixel:
   - Din → pin 6 (Arduino)
-  - 5V → 5V Arduino (se recomienda usar fuente externa si se alimentan más de 2 LEDs)
+  - 5V → 5V desde fuente externa 
   - GND → GND Arduino
 
 ## Diagrama de flujo del programa
@@ -88,4 +88,6 @@ Se han realizado las siguientes pruebas (más información en docs/pruebas.md):
 - Cálculo del estado global en Arduino con prioridad ALTO > BAJO > OK.
 - Evaluación del modo manual.
 - Tolerancia a pérdida de datos de un array.
+- Verificación de holgura de la rueda a la altura
+máxima prevista.
 
