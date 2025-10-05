@@ -309,7 +309,7 @@ void setup()
   pixels.begin();
   pixels.show();
 
-  Serial.begin(115200); // Para rosserial
+  Serial.begin(57600); // Para rosserial
   PUERTO_SENSOR_A.begin(VELOCIDAD_SERIE_SENSORES);
   PUERTO_SENSOR_B.begin(VELOCIDAD_SERIE_SENSORES);
 
