@@ -124,9 +124,11 @@ Demostrar, mediante evidencia fotográfica, que la rueda no entra en contacto co
 4. En la posición B, intentar introducir una galga o un objeto similar de 1 mm entre rueda y estructura en el punto crítico. Si el objeto entra sin rozamiento apreciable, registrar ">1 mm de separación"; si no entra pero no hay evidencia de contacto, registrar "sin contacto apreciable".
 
 **Criterio de aceptación:**  
+
 La prueba se considera superada si, para la altura máxima de la rueda, no se produce contacto rueda–estructura y se verifica al menos 1 mm de separación.
 
 **Resultado esperado:**
+
 Al superar el obstáculo, se verifica el criterio de aceptación o, en su defecto, ausencia clara de marcas de rozamiento.
 
 **Resultado real:**
