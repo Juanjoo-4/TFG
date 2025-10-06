@@ -27,7 +27,14 @@ rostopic echo /sensor_distances_2
 
 **Resultado real:**
 
-[![](https://markdown-videos.deta.dev/youtube/KGx-cfAc6IM)(https://youtu.be/KGx-cfAc6IM)]
+La comunicación entre el Arduino Mega 2560 Pro y ROS se mantiene estable durante toda la prueba.  
+Los tópicos `/sensor_distances_1` y `/sensor_distances_2` publican correctamente los arrays de 8 valores por sensor, con lecturas coherentes y sin interrupciones.  
+
+Las distancias se mantienen dentro del rango de detección previsto (aproximadamente entre 150 mm y 500 mm), y se observa una actualización continua y fluida de los datos en ROS.  
+
+🎥 **Vídeo de la prueba:**  
+https://github.com/Juanjo-4/TFG/blob/main/docs/videos/Prueba1.mp4
+
 
 # Prueba 2: Evaluación de alerta (modo automático)
 
