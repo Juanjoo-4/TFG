@@ -33,7 +33,8 @@ Los tópicos `/sensor_distances_1` y `/sensor_distances_2` publican correctament
 Las distancias se mantienen dentro del rango de detección previsto (aproximadamente entre 150 mm y 500 mm), y se observa una actualización continua y fluida de los datos en ROS.  
 
 🎥 **Vídeo de la prueba:**  
-https://github.com/Juanjo-4/TFG/blob/main/docs/videos/Prueba1.mp4
+
+[![Descripción del video](https://img.youtube.com/vi/KGx-cfAc6IM/0.jpg)](https://youtu.be/KGx-cfAc6IM)
 
 
 # Prueba 2: Evaluación de alerta (modo automático)
