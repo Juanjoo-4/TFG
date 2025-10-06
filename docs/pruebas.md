@@ -30,12 +30,31 @@ rostopic echo /sensor_distances_2
 La comunicación entre el Arduino Mega 2560 Pro y ROS se mantiene estable durante toda la prueba.  
 Los tópicos `/sensor_distances_1` y `/sensor_distances_2` publican correctamente los arrays de 8 valores por sensor, con lecturas coherentes y sin interrupciones.  
 
-Las distancias se mantienen dentro del rango de detección previsto (aproximadamente entre 150 mm y 500 mm), y se observa una actualización continua y fluida de los datos en ROS.  
+Las distancias se mantienen dentro del rango de detección previsto (aproximadamente entre 150 mm y 400 mm), y se observa una actualización continua y fluida de los datos en ROS.  
 
-🎥 **Vídeo de la prueba:**  
+🎥 **Imagen y vídeo de la prueba:**  
+
+<img width="1755" height="617" alt="Captura_Prueba1" src="https://github.com/user-attachments/assets/0750284b-09d8-43f8-9ae7-da8bd1d209a4" />
 
 [![Descripción del video](https://img.youtube.com/vi/KGx-cfAc6IM/0.jpg)](https://youtu.be/KGx-cfAc6IM)
 
+Para verificar la tasa de envío de mensajes, se ejecutó el comando:
+```bash
+rostopic hz /sensor_distances_1
+```
+ se observa una frecuencia promedio de aproximadamente 6,33 Hz, con una desviación estándar muy baja, lo que indica una transmisión estable y regular de los paquetes de
+ datos por parte del Arduino.
+<img width="735" height="433" alt="Hz_Prueba1" src="https://github.com/user-attachments/assets/567bc842-9226-462c-9517-dca8f670b2e8" />
+
+El siguiente comando:
+```bash
+rostopic hz /sensor_distances_1
+```
+se aprecia un ancho de banda promedio de ≈ 180 B/s, con un tamaño de mensaje constante de 28 bytes. Esto confirma que cada publicación contiene únicamente los valores numéricos esperados (8 distancias en formato entero) y que no existen sobrecargas innecesarias en la transmisión.
+
+Por último, se utilizó la herramienta rqt_plot para representar la evolución temporal de los valores recibidos en los sensores 4 y 5 de ambosarrays. En el siguiente video se muestra la estabilidad de las lecturas, con variaciones suaves y consistentes entre los sensores, lo que evidencia un comportamiento correcto y libre de ruido significativo.
+
+[![rqt plot - Demostración](https://img.youtube.com/vi/3h9d-gzrbG8/0.jpg)](https://youtu.be/3h9d-gzrbG8)
 
 # Prueba 2: Evaluación de alerta (modo automático)
 
