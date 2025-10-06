@@ -21,7 +21,7 @@
 
 // Configuración LEDs
 #define PIN_LED 6
-#define NUM_LEDS 1 // Solo uso uno como prueba porque lo estaba alimentando con el arduino
+#define NUM_LEDS 133 
 Adafruit_NeoPixel pixels(NUM_LEDS, PIN_LED, NEO_GRB + NEO_KHZ800);
 
 // Puertos Sensores
@@ -70,7 +70,8 @@ static bool ultimo_led_publicado = false;
 static bool hay_publicacion_led = false;
 static bool hay_publicacion_estado = false;
 
-// Función básica de LEDs Neopixel
+
+// Función básica de LEDs Neopixel 
 static inline void pintarColor(uint8_t r, uint8_t g, uint8_t b)
 {
   for (int i = 0; i < NUM_LEDS; i++)
@@ -80,6 +81,23 @@ static inline void pintarColor(uint8_t r, uint8_t g, uint8_t b)
 static inline void pintarVerde() { pintarColor(0, 255, 0); }
 static inline void pintarAzul() { pintarColor(0, 0, 255); }
 static inline void pintarRojo() { pintarColor(255, 0, 0); }
+
+// Capa para evitar llamar a show() si no cambia el color
+// Enumeración de colores para recordar qué hay pintado
+enum ColorLed : uint8_t { LED_VERDE=0, LED_AZUL=1, LED_ROJO=2 }; 
+static ColorLed ultimo_color_pintado = LED_VERDE;                
+
+// Pinta solo si el color cambia 
+static inline void pintarColorSiCambia(ColorLed c)               
+{
+  if (ultimo_color_pintado == c) return; // si no hay cambio, no llama a show()   
+  switch(c){                                                                    
+    case LED_VERDE: pintarVerde(); break;                                       
+    case LED_AZUL:  pintarAzul();  break;                                       
+    case LED_ROJO:  pintarRojo();  break;                                       
+  }                                                                             
+  ultimo_color_pintado = c;                                                     
+}
 
 // Callbacks ROS
 
@@ -95,10 +113,7 @@ void callbackModoManual(const std_msgs::Bool &msg)
     modo_manual = nuevo_modo;
     if (modo_manual)
     {
-      if (alerta_forzada)
-        pintarRojo();
-      else
-        pintarVerde();
+      pintarColorSiCambia(alerta_forzada ? LED_ROJO : LED_VERDE); 
     }
   }
 }
@@ -110,10 +125,7 @@ void callbackAlertaForzada(const std_msgs::Bool &msg)
   alerta_forzada = msg.data;
   if (modo_manual)
   {
-    if (alerta_forzada)
-      pintarRojo();
-    else
-      pintarVerde();
+    pintarColorSiCambia(alerta_forzada ? LED_ROJO : LED_VERDE); 
   }
 }
 ros::Subscriber<std_msgs::Bool> subscriptor_alerta("/alerta_forzada", &callbackAlertaForzada);
@@ -273,32 +285,19 @@ static void publicarYPintar(int8_t estado)
     hay_publicacion_led = true;
   }
 
-  // Pintar LEDs de forma que:
-  // En manual: rojo/verde según alerta_forzada
-  // En automático: verde = OK, azul = BAJO, rojo = ALTO
+  // Pintar LEDs
   if (modo_manual)
   {
-    if (alerta_forzada)
-      pintarRojo();
-    else
-      pintarVerde();
+    pintarColorSiCambia(alerta_forzada ? LED_ROJO : LED_VERDE); 
   }
   else
   {
-    switch (estado)
+    switch (estado) 
     {
-    case 0:
-      pintarVerde();
-      break;
-    case 1:
-      pintarAzul();
-      break;
-    case 2:
-      pintarRojo();
-      break;
-    default:
-      pintarVerde();
-      break;
+      case 0: pintarColorSiCambia(LED_VERDE); break; // NUEVO
+      case 1: pintarColorSiCambia(LED_AZUL);  break; // NUEVO
+      case 2: pintarColorSiCambia(LED_ROJO);  break; // NUEVO
+      default: pintarColorSiCambia(LED_VERDE); break; // NUEVO
     }
   }
 }
@@ -336,9 +335,11 @@ void setup()
   hay_publicacion_led = false;
 
   // Flash de arranque
-  pintarAzul();
+  pintarAzul();  
   delay(200);
   pintarVerde();
+
+  ultimo_color_pintado = LED_VERDE; // Sincroniza el “estado de color” recordado con lo que se acaba de pintar
 }
 
 void loop()
