@@ -88,6 +88,4 @@ Se han realizado las siguientes pruebas (más información en docs/pruebas.md):
 - Cálculo del estado global en Arduino con prioridad ALTO > BAJO > OK.
 - Evaluación del modo manual.
 - Tolerancia a pérdida de datos de un array.
-- Verificación de holgura de la rueda a la altura
-máxima prevista.
 
