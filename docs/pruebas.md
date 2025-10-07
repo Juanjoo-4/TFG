@@ -91,7 +91,8 @@ Durante la ejecución de la prueba se comprobó que el sistema detectaba correct
 
 En el segundo video se observa el mismo funcionamiento, pero en este caso desde los sensores laterales.
 
-[![Prueba 2 – Lateral](https://img.youtube.com/vi/vdcaqI_Xc8A/0.jpg)](https://youtu.be/vdcaqI_Xc8A)
+[![Prueba 2 – Lateral](https://img.youtube.com/vi/8FoMVAmjjk0/0.jpg)](https://youtu.be/8FoMVAmjjk0)
+
 
 En el último vídeo, se observa como se encienden los LEDs igualmente pero debido a la proximidad de la caja por la esquina trasera.
 
