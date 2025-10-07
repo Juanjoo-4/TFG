@@ -87,15 +87,16 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 
 Durante la ejecución de la prueba se comprobó que el sistema detectaba correctamente los cambios de estado en función de las distancias medidas por los sensores. En el primer vídeo se puede observar el cambio de estado al situar una caja dentro del rango inferior de detección, el valor publicado en el tópico /alerta_estado cambió de 0 a 1, mientras que el mensaje /alerta_led alternó entre True y False en correspondencia con las variaciones de los sensores.
 
-[![Prueba 2 – Frontal (nueva)](https://img.youtube.com/vi/7J2pJgRXcdc/0.jpg)](https://youtu.be/7J2pJgRXcdc)
+[![Prueba 2 – Frontal](https://img.youtube.com/vi/7J2pJgRXcdc/0.jpg)](https://youtu.be/7J2pJgRXcdc)
 
 En el segundo video se observa el mismo funcionamiento, pero en este caso desde los sensores laterales.
 
-[![Prueba 2 – Lateral](<https://img.youtube.com/vi/GVIAIHRoIYA/0.jpg>)](<https://youtu.be/GVIAIHRoIYA>)
+[![Prueba 2 – Lateral](https://img.youtube.com/vi/vdcaqI_Xc8A/0.jpg)](https://youtu.be/vdcaqI_Xc8A)
 
 En el último vídeo, se observa como se encienden los LEDs igualmente pero debido a la proximidad de la caja por la esquina trasera.
 
-[![Prueba 2 - Esquina trasera](https://img.youtube.com/vi/p5DWbBj6l8M/0.jpg)](https://youtu.be/p5DWbBj6l8M)
+[![Prueba 2 – Esquina trasera](https://img.youtube.com/vi/RfYMver3Jpk/0.jpg)](https://youtu.be/RfYMver3Jpk)
+
 
 # Prueba 3: Evaluación de modo manual 
 
