@@ -32,8 +32,6 @@ Los tópicos `/sensor_distances_1` y `/sensor_distances_2` publican correctament
 
 Las distancias se mantienen dentro del rango de detección previsto (aproximadamente entre 150 mm y 400 mm), y se observa una actualización continua y fluida de los datos en ROS.  
 
-🎥 **Imagen y vídeo de la prueba:**  
-
 <img width="1755" height="617" alt="Captura_Prueba1" src="https://github.com/user-attachments/assets/0750284b-09d8-43f8-9ae7-da8bd1d209a4" />
 
 [![Descripción del video](https://img.youtube.com/vi/KGx-cfAc6IM/0.jpg)](https://youtu.be/KGx-cfAc6IM)
@@ -44,6 +42,7 @@ rostopic hz /sensor_distances_1
 ```
  se observa una frecuencia promedio de aproximadamente 6,33 Hz, con una desviación estándar muy baja, lo que indica una transmisión estable y regular de los paquetes de
  datos por parte del Arduino.
+ 
 <img width="735" height="433" alt="Hz_Prueba1" src="https://github.com/user-attachments/assets/567bc842-9226-462c-9517-dca8f670b2e8" />
 
 El siguiente comando:
@@ -86,6 +85,18 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 
 **Resultado real:**
 
+Durante la ejecución de la prueba se comprobó que el sistema detectaba correctamente los cambios de estado en función de las distancias medidas por los sensores. En el primer vídeo se puede observar el cambio de estado al situar una caja dentro del rango inferior de detección, el valor publicado en el tópico /alerta_estado cambió de 0 a 1, mientras que el mensaje /alerta_led alternó entre True y False en correspondencia con las variaciones de los sensores.
+
+[![Prueba 2 - Frontal](https://img.youtube.com/vi/-78qRNNndis/0.jpg)](https://youtu.be/-78qRNNndis)
+
+En el segundo video se observa el mismo funcionamiento, pero en este caso desde los sensores laterales.
+
+[![Prueba 2 - Lateral](https://img.youtube.com/vi/GVIAIHRoIYA/0.jpg)](https://youtu.be/GVIAIHRoIYA)
+
+En el último vídeo, se observa como se encienden los LEDs igualmente pero debido a la proximidad de la caja por la esquina trasera.
+
+[![Prueba 2 - Esquina trasera](https://img.youtube.com/vi/p5DWbBj6l8M/0.jpg)](https://youtu.be/p5DWbBj6l8M)
+
 # Prueba 3: Evaluación de modo manual 
 
 **Objetivo:**
@@ -118,6 +129,15 @@ rostopic pub /modo_manual std_msgs/Bool "data: false" -1
 
 **Resultado real:**
 
+En el primer vídeo se muestra la activación del modo manual. Inicialmente, el valor de /alerta_forzada es False y los LEDs permanecen en color verde. Al cambiar el valor de /alerta_forzada a True, los LEDs pasan inmediatamente a rojo, confirmando que el sistema obedece la orden forzada enviada desde ROS. Posteriormente, al acercar un objeto a los sensores, se comprueba que el modo automático no interviene, ya que los LEDs permanecen rojos pese a la variación de distancia.
+
+[![Prueba 3 - Modo manual TRUE](https://img.youtube.com/vi/cZ9v-GQI4_I/0.jpg)](https://youtu.be/cZ9v-GQI4_I)
+
+En el segundo vídeo se observa se acercó un objeto a los sensores para comprobar que el sistema no respondía automáticamente mientras el modo manual está activo. A continuación, al volver /alerta_forzada a False, los LEDs cambian nuevamente a verde. Finalmente, se desactiva el modo manual y el sistema recupera la lógica automática: los LEDs pasan a azul al detectar un objeto cercano, demostrando que el comportamiento vuelve a depender de las medidas reales de los sensores.
+
+[![Prueba 3 - Modo manual FALSE](https://img.youtube.com/vi/VqqzFcgsXv8/0.jpg)](https://youtu.be/VqqzFcgsXv8)
+
+
 # Prueba 4: Tolerancia a pérdida de datos de un array
 
 **Objetivo:**
@@ -141,27 +161,9 @@ rostopic echo /alerta_led
 
 **Resultado real:**
 
-# Prueba 5: Verificación de holgura de la rueda a la altura máxima prevista
+En el vídeo correspondiente se observa que, inicialmente, los sensores actualizan sus datos de forma continua en función de las lecturas de los sensores, mientras el valor del tópico /alerta_estado permanece en 0, indicando un funcionamiento normal.
 
-**Objetivo:**
+A continuación, al desconectar la alimentación de los sensores, los LEDs cambian inmediatamente a color azul, señalando la detección de una condición anómala. Simultáneamente, en la terminal se aprecia cómo el valor de /alerta_estado pasa a 1 y las lecturas de los sensores dejan de actualizarse, confirmando que el sistema identifica correctamente la pérdida de comunicación y responde de manera visual mediante el color azul.
 
-Demostrar, mediante evidencia fotográfica, que la rueda no entra en contacto con la estructura cuando supera irregularidades u obstáculos dentro del rango previsto de operación.
+[![Prueba 4](https://img.youtube.com/vi/vwm33qtRRzA/0.jpg)](https://youtu.be/vwm33qtRRzA)
 
-**Procedimiento:**  
-1. Situar el robot sobre superficie plana y nivelada. Identificar el punto de holgura mínima entre la cara externa de la rueda y el elemento estructural más cercano.
-2. Colocar, delante de la rueda, un obstáculo rígido.
-3. Avanzar lentamente el robot hasta superar el obstáculo, capturando:
-   - Primer contacto rueda–obstáculo.
-   - Rueda en el punto de máxima altura.
-   - Rueda tras superar el obstáculo.
-4. En la posición B, intentar introducir una galga o un objeto similar de 1 mm entre rueda y estructura en el punto crítico. Si el objeto entra sin rozamiento apreciable, registrar ">1 mm de separación"; si no entra pero no hay evidencia de contacto, registrar "sin contacto apreciable".
-
-**Criterio de aceptación:**  
-
-La prueba se considera superada si, para la altura máxima de la rueda, no se produce contacto rueda–estructura y se verifica al menos 1 mm de separación.
-
-**Resultado esperado:**
-
-Al superar el obstáculo, se verifica el criterio de aceptación o, en su defecto, ausencia clara de marcas de rozamiento.
-
-**Resultado real:**
