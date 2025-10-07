@@ -51,7 +51,7 @@ rostopic hz /sensor_distances_1
 ```
 se aprecia un ancho de banda promedio de ≈ 180 B/s, con un tamaño de mensaje constante de 28 bytes. Esto confirma que cada publicación contiene únicamente los valores numéricos esperados (8 distancias en formato entero) y que no existen sobrecargas innecesarias en la transmisión.
 
-Por último, se utilizó la herramienta rqt_plot para representar la evolución temporal de los valores recibidos en los sensores 4 y 5 de ambosarrays. En el siguiente video se muestra la estabilidad de las lecturas, con variaciones suaves y consistentes entre los sensores, lo que evidencia un comportamiento correcto y libre de ruido significativo.
+Por último, se utilizó la herramienta rqt_plot para representar la evolución temporal de los valores recibidos en los sensores 4 y 5 de ambos arrays. En el siguiente video se muestra la estabilidad de las lecturas, con variaciones suaves y consistentes entre los sensores, lo que evidencia un comportamiento correcto y libre de ruido significativo.
 
 [![rqt plot - Demostración](https://img.youtube.com/vi/3h9d-gzrbG8/0.jpg)](https://youtu.be/3h9d-gzrbG8)
 
@@ -87,7 +87,7 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 
 Durante la ejecución de la prueba se comprobó que el sistema detectaba correctamente los cambios de estado en función de las distancias medidas por los sensores. En el primer vídeo se puede observar el cambio de estado al situar una caja dentro del rango inferior de detección, el valor publicado en el tópico /alerta_estado cambió de 0 a 1, mientras que el mensaje /alerta_led alternó entre True y False en correspondencia con las variaciones de los sensores.
 
-[![Prueba 2 - Frontal](https://img.youtube.com/vi/-78qRNNndis/0.jpg)](https://youtu.be/-78qRNNndis)
+[![Prueba 2 - Frontal](https://img.youtube.com/vi/-78qRNNndis/maxresdefault.jpg)](https://youtu.be/-78qRNNndis)
 
 En el segundo video se observa el mismo funcionamiento, pero en este caso desde los sensores laterales.
 
