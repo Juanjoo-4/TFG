@@ -87,7 +87,10 @@ Prioridad de combinación entre arrays: ALTO (2) > BAJO (1) > OK (0).
 
 Durante la ejecución de la prueba se comprobó que el sistema detectaba correctamente los cambios de estado en función de las distancias medidas por los sensores. En el primer vídeo se puede observar el cambio de estado al situar una caja dentro del rango inferior de detección, el valor publicado en el tópico /alerta_estado cambió de 0 a 1, mientras que el mensaje /alerta_led alternó entre True y False en correspondencia con las variaciones de los sensores.
 
-[![Prueba 2 – Frontal](<https://img.youtube.com/vi/-78qRNNndis/0.jpg>)](<https://youtu.be/-78qRNNndis>)
+<h3>Prueba 2 – Frontal</h3>
+<a href="https://youtu.be/-78qRNNndis" target="_blank" rel="noopener">
+  <img src="https://img.youtube.com/vi/-78qRNNndis/0.jpg" alt="Prueba 2 – Frontal" width="480">
+</a>
 
 En el segundo video se observa el mismo funcionamiento, pero en este caso desde los sensores laterales.
 
