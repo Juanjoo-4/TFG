@@ -10,19 +10,24 @@ Para ello se diseñaron varias piezas independientes que, una vez ensambladas, c
 
 - Las piezas S1 y S2 actúan como soportes específicos para los módulos de los sensores, asegurando su orientación adecuada hacia la parte frontal del robot. Cabe destacar que estas no son piezas independientes, sino que forman parte de las piezas A3 y B3. Además, cuentan con dos piezas adicionales, C1 y C2, que sirven como refuerzo para evitar que los sensores se desplacen fuera de su cubículo.
 
+![Croquis](docs/Croquis-estructura.png)
+
 ## Piezas tipo A
 
 ### Pieza A
 
-La pieza A constituye el elemento base a partir del cual se derivan el resto de piezas del
-mismo tipo. Se trata de la más sencilla del conjunto, pero al mismo tiempo sirve como referencia dimensional para el diseño de las demás esquinas.
+La pieza A constituye el elemento base a partir del cual se derivan el resto de piezas del mismo tipo. Se trata de la más sencilla del conjunto, pero al mismo tiempo sirve como referencia dimensional para el diseño de las demás esquinas.
 
 En su diseño se tuvieron en cuenta las restricciones de espacio impuestas por la estructura general del robot, que obligaban a limitar la extensión de la pieza a unos 25 mm en dirección horizontal desde el borde de la base y a 23 mm en altura respecto a la misma. Estas dimensiones aseguran que las piezas encajen en el espacio disponible sin interferir con otros elementos.
 
-Desdela vista inferior de la pieza puede observarse un rebaje que responde al cono de detección
+Desde la vista inferior de la pieza puede observarse un rebaje que responde al cono de detección
 del sensor. Este detalle evita obstrucciones en el campo de medida, garantizando que la geometría de la pieza no afecte a la lectura de distancias. En esta misma vista se aprecia además varios taladros pasantes que permitirían fijar la pieza mediante tornillería, en caso de que se requiera una sujeción más robusta.
  
 La vista lateral muestra por su parte la inclinación de 45º en la disposición de los sensores, lo que permite una cobertura óptima del entorno. En esta cara y en la opuesta, se ubican también dos taladros adicionales, destinados a la unión entre piezas, que aseguran la continuidad y rigidez de la estructura completa.
+
+![Pieza A](docs/Pieza_A_1-Photoroom.png)
+![Pieza A 1](docs/Pieza_A_2-Photoroom.png)
+![Pieza A 2](docs/Pieza_A_3-Photoroom.png)
 
 ### Pieza A1
 
@@ -32,11 +37,15 @@ Con el fin de evitar posibles interferencias entre la barra de sensores y el mov
  
 En el resto de aspectos, la pieza A1 conserva las mismas características geométricas y de montaje que la pieza A.
 
+![Pieza A1](docs/Pieza_A1_1-Photoroom.png)
+
 ### Pieza A2
 
 La pieza A2 reproduce el mismo diseño que la A1, ya que cumple la misma función de evitar interferencias con las ruedas. La única diferencia radica en su ubicación dentro de la estructura, situada en la esquina opuesta para mantener la simetría del conjunto.
  
 De esta forma, se asegura que tanto en el lado izquierdo como en el derecho del robot se dispone del espacio necesario para el movimiento de las ruedas, sin riesgo de colisiones con la barra de sensores.
+
+![Pieza A2](docs/Pieza_A2_1-Photoroom.png)
 
 ### Pieza A3
 
@@ -44,6 +53,10 @@ La pieza A3 comparte la misma base geométrica que la pieza A, ya que se ubica e
 encaje correcto y estable del dispositivo.
 
 Para evitar que el sensor pueda desplazarse fuera de su posición, la pieza A3 trabaja conjuntamente con la pieza C1, que actúa como elemento de retención. De este modo, se garantiza que el módulo permanezca fijo incluso en caso de vibraciones o movimientos bruscos durante el funcionamiento del robot.
+
+![Pieza A3](docs/Pieza_A3_1-Photoroom.png)
+![Pieza A3 1](docs/Pieza_A3_2-Photoroom.png)
+![Pieza C1](docs/Pieza_C1_1-Photoroom.png)
 
 ## Piezas tipo B
 
@@ -53,17 +66,23 @@ La pieza B se encuentra situada entre las piezas A1 y A2, funcionando como eleme
  
 Su función principal es garantizar la continuidad estructural entre las piezas de las esquinas y aportar la rigidez necesaria al conjunto, manteniendo la geometría de la base.
 
+![Pieza B](docs/Pieza_B_1-Photoroom.png)
+
 ### Pieza B1
 
 La pieza B1 se sitúa en el lateral de la estructura, en contacto directo con la pieza A. Su diseño mantiene la misma geometría base que el resto del grupo B, aportando rigidez al conjunto y actuando como elemento de unión entre los extremos. 
 
 Como particularidad, se incorporó un taladro adicional que coincide con la zona central del lateral de la base, necesario para permitir el paso de un tornillo ubicado en esa posición. Este ajuste responde a un condicionante geométrico del chasis, garantizando así que la pieza pueda encajar sin interferencias y manteniendo la continuidad estructural del lateral. Además, se le introdujo un hueco lateral destinado a permitir la salida de los pines de conexión de la tira de LEDs.
 
+![Pieza B1](docs/Pieza_B1-Photoroom.png)
+
 ### Pieza B2
 
 La pieza B2 se encuentra situada en el lateral de la estructura, junto a la pieza A2. A diferencia de B1, en este caso se incorporó un espacio específico para alojar un sensor, aprovechando la geometría de la zona y evitando interferencias con la rueda.
 
 Además, al igual que en la pieza B1, se mantuvo el taladro adicional en la parte central del lateral para permitir el paso del tornillo de fijación de la base. De esta manera, la pieza B2 cumple un doble papel: reforzar la estructura lateral y servir como soporte seguro para uno de los sensores del sistema.
+
+![Pieza B2](docs/Pieza_B2_1-Photoroom.png)
 
 ### Pieza B3
 
@@ -73,15 +92,24 @@ Para asegurar la fijación del módulo en su posición y evitar desplazamientos 
  
 Además de esta modificación, se ajustó el sistema de unión entre piezas: en este lateral se eliminó uno de los taladros previstos para la fijación, manteniéndose únicamente el que realmente se emplea en conjunto con la pieza A1.
 
+![Pieza B3](docs/Pieza_B3_1-Photoroom.png)
+![Pieza C2](docs/Pieza_C2_1-Photoroom.png)
+
 ### Pieza B4
 
 La pieza B4 se ubica en el lateral de la estructura, justo al lado de la pieza A3. Aunque mantiene la misma geometría base que el resto del grupo B, se incorporó una plataforma donde se colocará el Arduino y se le introdujo un hueco lateral, como se hizo en la pieza B1.
+
+![Pieza B4](docs/Pieza_B4-Photoroom.png)
 
 ### Pieza B5
 
 La pieza B5 se ubica en la parte trasera de la estructura, entre las piezas A3 y A. Su geometría es similar a la del resto del grupo B. La única particularidad en este caso es que en su parte central incorpora un hueco para el paso de un tornillo situado en la parte central de la parte trasera de la base. Este detalle responde a un condicionante de montaje, garantizando que la pieza pueda encajar sin interferencias y manteniendo la solidez del conjunto.
 
+![Pieza B5](docs/Pieza_B5_1-Photoroom.png)
+
 ## Montaje de la estructura
 
 Una vez diseñadas y fabricadas todas las piezas, se procedió al montaje completo de la estructura, la siguiente imagen muestra la disposición completa de ambas secciones una vez montados los sensores, las tiras de LEDs y el Arduino. En esta fase se verificó el correcto encaje de las piezas y la orientación de los sensores, así como el espacio disponible para el cableado y la conexión de los módulos electrónicos antes de la integración final en el robot Rafi.
+
+![Montaje](docs/Ambas_partes.png)
  
