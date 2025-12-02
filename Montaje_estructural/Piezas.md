@@ -10,6 +10,8 @@ Para ello se diseñaron varias piezas independientes que, una vez ensambladas, c
 
 - Las piezas S1 y S2 actúan como soportes específicos para los módulos de los sensores, asegurando su orientación adecuada hacia la parte frontal del robot. Cabe destacar que estas no son piezas independientes, sino que forman parte de las piezas A3 y B3. Además, cuentan con dos piezas adicionales, C1 y C2, que sirven como refuerzo para evitar que los sensores se desplacen fuera de su cubículo.
 
+Los números que rodean el perímetro del croquis indican la ubicación de los sensores TeraRanger Multiflex, dispuestos de forma que se cubran las direcciones frontal, lateral y de esquina, garantizando así una detección envolvente en el plano horizontal.
+
 ![Croquis](../docs/croquis-estructura.png) 
 
 ## Piezas tipo A
