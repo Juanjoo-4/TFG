@@ -111,6 +111,6 @@ La pieza B5 se ubica en la parte trasera de la estructura, entre las piezas A3 y
 
 Una vez diseñadas y fabricadas todas las piezas, se procedió al montaje completo de la estructura, la siguiente imagen muestra la disposición completa de ambas secciones una vez montados los sensores, las tiras de LEDs y el Arduino. En esta fase se verificó el correcto encaje de las piezas y la orientación de los sensores, así como el espacio disponible para el cableado y la conexión de los módulos electrónicos antes de la integración final en el robot Rafi.
 
-![Montaje](docs/Ambas_partes.png)
-https://github.com/Juanjoo-4/TFG/blob/0e7186b310520748e58549b6a52ff6335e1dc6b0/docs/Ambas_partes.jpg
+![Montaje](docs/Ambas_partes.jpg)
+
 
