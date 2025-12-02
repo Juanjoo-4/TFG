@@ -10,7 +10,7 @@ Para ello se diseñaron varias piezas independientes que, una vez ensambladas, c
 
 - Las piezas S1 y S2 actúan como soportes específicos para los módulos de los sensores, asegurando su orientación adecuada hacia la parte frontal del robot. Cabe destacar que estas no son piezas independientes, sino que forman parte de las piezas A3 y B3. Además, cuentan con dos piezas adicionales, C1 y C2, que sirven como refuerzo para evitar que los sensores se desplacen fuera de su cubículo.
 
-![Croquis](docs/Croquis-estructura.png) 
+![Croquis](docs/croquis-estructura.png) 
 
 ## Piezas tipo A
 
